@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -11,70 +12,188 @@
         android:background="?attr/colorPrimary"
         app:navigationIcon="?attr/homeAsUpIndicator"
         app:title="@string/menu_settings"
-        app:titleTextColor="@color/white"
-        xmlns:app="http://schemas.android.com/apk/res-auto" />
+        app:titleTextColor="@color/white" />
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/screen_padding">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_font_size"
-            android:textColor="@color/text_primary"
-            android:textSize="@dimen/word_text"
-            android:textStyle="bold" />
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:padding="@dimen/screen_padding">
+
+            <!-- ===== Font size (original section, unchanged) ===== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_font_size"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/word_text"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_font_size_small"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/definition_text" />
+
+                <SeekBar
+                    android:id="@+id/font_size_seekbar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:max="6"
+                    android:progress="3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_font_size_large"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/definition_text" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_font_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="apple 苹果"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/word_text" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/settings_font_size_small"
+                android:layout_marginTop="4dp"
+                android:text="预览效果（上方为列表/弹窗字体大小）"
                 android:textColor="@color/text_secondary"
                 android:textSize="@dimen/definition_text" />
 
-            <SeekBar
-                android:id="@+id/font_size_seekbar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:max="6"
-                android:progress="3" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/divider" />
 
+            <!-- ===== Card set management (new section) ===== -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/settings_font_size_large"
+                android:layout_marginTop="4dp"
+                android:text="@string/settings_card_sets"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/word_text"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_new_set"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/search_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_search"
+                    android:hint="@string/settings_set_name_hint"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textSize="@dimen/definition_text" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_create_set"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/search_height"
+                    android:layout_marginStart="6dp"
+                    android:text="@string/settings_create"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/definition_text"
+                    app:backgroundTint="@color/primary"
+                    app:cornerRadius="@dimen/card_corner" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_card_sets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:nestedScrollingEnabled="false" />
+
+            <TextView
+                android:id="@+id/tv_no_sets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/settings_no_sets"
                 android:textColor="@color/text_secondary"
-                android:textSize="@dimen/definition_text" />
+                android:textSize="@dimen/definition_text"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/divider" />
+
+            <!-- ===== Hide built-in dictionary toggle (new section) ===== -->
+            <LinearLayout
+                android:id="@+id/row_hide_builtin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_hide_builtin"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/word_text"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/settings_hide_builtin_summary"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="@dimen/definition_text" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/sw_hide_builtin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_font_preview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="apple 苹果"
-            android:textColor="@color/text_primary"
-            android:textSize="@dimen/word_text" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="预览效果（上方为列表/弹窗字体大小）"
-            android:textColor="@color/text_secondary"
-            android:textSize="@dimen/definition_text" />
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>
+

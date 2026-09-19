@@ -21,6 +21,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".AddCardActivity"
+            android:exported="false"
+            android:label="@string/menu_add_card"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".CardManageActivity"
+            android:exported="false"
+            android:label="@string/menu_card_manage"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".SettingsActivity"
             android:exported="false"
             android:label="@string/menu_settings"

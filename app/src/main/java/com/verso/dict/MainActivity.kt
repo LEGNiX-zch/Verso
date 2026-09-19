@@ -9,16 +9,20 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.verso.dict.data.DictionaryDbHelper
+import com.verso.dict.data.UserCardDbHelper
 import com.verso.dict.databinding.ActivityMainBinding
+import com.verso.dict.ui.AddCardActivity
+import com.verso.dict.ui.CardManageActivity
 import com.verso.dict.ui.WordAdapter
 import com.verso.dict.ui.WordDialogFragment
+import com.verso.dict.util.CombinedSearchEngine
 import com.verso.dict.util.FontSizeManager
-import com.verso.dict.util.SearchEngine
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var db: DictionaryDbHelper
+    private lateinit var userDb: UserCardDbHelper
     private lateinit var adapter: WordAdapter
     @Volatile private var dbReady = false
 
@@ -31,6 +35,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         db = DictionaryDbHelper(this)
+        userDb = UserCardDbHelper(this)
+        userDb.open()
 
         setSupportActionBar(binding.toolbar)
         val toggle = ActionBarDrawerToggle(
@@ -45,6 +51,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.navView.setNavigationItemSelectedListener { item ->
             val target = when (item.itemId) {
+                R.id.nav_add_card -> AddCardActivity::class.java
+                R.id.nav_card_manage -> CardManageActivity::class.java
                 R.id.nav_settings -> SettingsActivity::class.java
                 R.id.nav_about -> AboutActivity::class.java
                 else -> null
@@ -96,7 +104,7 @@ class MainActivity : AppCompatActivity() {
             while (!dbReady && waited < maxWait) {
                 Thread.sleep(step); waited += step
             }
-            val results = SearchEngine.search(db, query)
+            val results = CombinedSearchEngine.search(this, db, userDb, query)
             runOnUiThread {
                 if (results.isEmpty()) {
                     showEmpty(getString(R.string.empty_results))

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="?attr/colorPrimary"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:title="@string/menu_add_card"
+        app:titleTextColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/screen_padding">
+
+        <EditText
+            android:id="@+id/et_word"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_height"
+            android:background="@drawable/bg_search"
+            android:hint="@string/add_card_word_hint"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textSize="@dimen/definition_text" />
+
+        <EditText
+            android:id="@+id/et_definition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_search"
+            android:gravity="top|start"
+            android:hint="@string/add_card_def_hint"
+            android:inputType="textMultiLine"
+            android:minHeight="@dimen/search_height"
+            android:padding="10dp"
+            android:textSize="@dimen/definition_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/add_card_set_label"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/definition_text"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/sp_set"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_height"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_search"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_height"
+            android:layout_marginTop="16dp"
+            android:text="@string/add_card_save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/definition_text"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="@dimen/card_corner" />
+    </LinearLayout>
+</LinearLayout>

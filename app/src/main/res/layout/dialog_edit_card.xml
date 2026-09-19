@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/screen_padding">
+
+    <EditText
+        android:id="@+id/et_edit_word"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/search_height"
+        android:background="@drawable/bg_search"
+        android:hint="@string/add_card_word_hint"
+        android:inputType="text"
+        android:maxLines="1"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textSize="@dimen/definition_text" />
+
+    <EditText
+        android:id="@+id/et_edit_definition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_search"
+        android:gravity="top|start"
+        android:hint="@string/add_card_def_hint"
+        android:inputType="textMultiLine"
+        android:minHeight="@dimen/search_height"
+        android:padding="10dp"
+        android:textSize="@dimen/definition_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/add_card_set_label"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/definition_text"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/sp_edit_set"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/search_height"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/bg_search"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp" />
+</LinearLayout>

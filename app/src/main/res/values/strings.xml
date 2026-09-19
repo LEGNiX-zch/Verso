@@ -2,6 +2,8 @@
     <string name="app_name">Verso</string>
     <string name="menu_settings">设置</string>
     <string name="menu_about">关于</string>
+    <string name="menu_add_card">添加词卡</string>
+    <string name="menu_card_manage">词卡管理</string>
     <string name="search_hint">输入英文单词或中文释义</string>
     <string name="search_button">查询</string>
     <string name="empty_results">未找到匹配结果</string>
@@ -18,4 +20,32 @@
     <string name="word_definition_label">释义</string>
     <string name="action_search_reverse">反向检索</string>
     <string name="action_search_forward">正向检索</string>
+
+    <!-- Add card -->
+    <string name="add_card_word_hint">英文单词</string>
+    <string name="add_card_def_hint">中文释义</string>
+    <string name="add_card_set_label">归属词卡集</string>
+    <string name="add_card_save">保存词卡</string>
+    <string name="add_card_saved">已保存</string>
+    <string name="add_card_invalid">请填写单词和释义</string>
+
+    <!-- Card management -->
+    <string name="card_manage_filter_all">全部词卡集</string>
+    <string name="card_manage_empty">暂无自定义词卡</string>
+    <string name="card_manage_edit">编辑</string>
+    <string name="card_manage_delete">删除</string>
+    <string name="card_manage_confirm_delete">删除该词卡？</string>
+    <string name="card_manage_confirm">确认</string>
+    <string name="card_manage_cancel">取消</string>
+
+    <!-- Settings: card sets -->
+    <string name="settings_card_sets">词卡集管理</string>
+    <string name="settings_new_set">新建词卡集</string>
+    <string name="settings_set_name_hint">词卡集名称</string>
+    <string name="settings_create">创建</string>
+    <string name="settings_delete_set">删除</string>
+    <string name="settings_confirm_delete_set">删除该词卡集将一并删除其中全部词卡，确认？</string>
+    <string name="settings_no_sets">暂无词卡集</string>
+    <string name="settings_hide_builtin">屏蔽内置词库</string>
+    <string name="settings_hide_builtin_summary">开启后搜索仅显示自建词卡，不再出现内置词条</string>
 </resources>
