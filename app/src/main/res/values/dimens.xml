@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Watch-optimized defaults (OPPO Watch 1st gen 46mm square ~ sw160dp).
+         Phones (sw >= 320dp) override these via values-sw320dp. -->
+    <dimen name="screen_padding">12dp</dimen>
+    <dimen name="card_padding">10dp</dimen>
+    <dimen name="card_corner">8dp</dimen>
+    <dimen name="card_margin_h">8dp</dimen>
+    <dimen name="card_margin_v">4dp</dimen>
+    <dimen name="word_text">16sp</dimen>
+    <dimen name="definition_text">13sp</dimen>
+    <dimen name="title_text">18sp</dimen>
+    <dimen name="toolbar_height">44dp</dimen>
+    <dimen name="search_height">40dp</dimen>
+    <dimen name="drawer_width">200dp</dimen>
+</resources>

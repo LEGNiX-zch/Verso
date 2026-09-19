@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Phone-sized overrides (smallest width >= 320dp, e.g. normal Android phones). -->
+    <dimen name="screen_padding">16dp</dimen>
+    <dimen name="card_padding">14dp</dimen>
+    <dimen name="card_corner">10dp</dimen>
+    <dimen name="card_margin_h">12dp</dimen>
+    <dimen name="card_margin_v">6dp</dimen>
+    <dimen name="word_text">18sp</dimen>
+    <dimen name="definition_text">14sp</dimen>
+    <dimen name="title_text">20sp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="search_height">48dp</dimen>
+    <dimen name="drawer_width">280dp</dimen>
+</resources>

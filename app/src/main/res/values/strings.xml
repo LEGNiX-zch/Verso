@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Verso</string>
+    <string name="menu_settings">设置</string>
+    <string name="menu_about">关于</string>
+    <string name="search_hint">输入英文单词或中文释义</string>
+    <string name="search_button">查询</string>
+    <string name="empty_results">未找到匹配结果</string>
+    <string name="drawer_open">打开侧边菜单</string>
+    <string name="drawer_close">关闭侧边菜单</string>
+    <string name="settings_font_size">字体大小</string>
+    <string name="settings_font_size_small">小</string>
+    <string name="settings_font_size_large">大</string>
+    <string name="about_version">版本</string>
+    <string name="about_appreciate">赞赏作者</string>
+    <string name="appreciate_title">赞赏作者</string>
+    <string name="appreciate_message">扫描下方二维码即可赞赏，感谢您的支持！</string>
+    <string name="appreciate_close">关闭</string>
+    <string name="word_definition_label">释义</string>
+    <string name="action_search_reverse">反向检索</string>
+    <string name="action_search_forward">正向检索</string>
+</resources>
