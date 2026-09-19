@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var db: DictionaryDbHelper
     private lateinit var adapter: WordAdapter
+    @Volatile private var dbReady = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +59,15 @@ class MainActivity : AppCompatActivity() {
 
         binding.searchButton.setOnClickListener { doSearch() }
 
+        // One-time copy of the prebuilt dictionary database (shipped in assets) into the app's
+        // private database directory. Run off the main thread so the OPPO Watch UI is not blocked.
+        if (!dbReady) {
+            Thread {
+                db.ensureDatabase()
+                dbReady = true
+            }.start()
+        }
+
         // Refresh list fonts when returning from settings (font level may have changed).
         adapter.notifyDataSetChanged()
     }
@@ -74,14 +84,25 @@ class MainActivity : AppCompatActivity() {
             showEmpty(getString(R.string.empty_results))
             return
         }
-        val results = SearchEngine.search(db, query)
-        if (results.isEmpty()) {
-            showEmpty(getString(R.string.empty_results))
-        } else {
-            binding.emptyView.visibility = View.GONE
-            adapter.submitList(results)
-        }
-        hideKeyboard()
+        // If the one-time database copy from assets is still running, wait briefly for it.
+        Thread {
+            val maxWait = 8000L
+            val step = 50L
+            var waited = 0L
+            while (!dbReady && waited < maxWait) {
+                Thread.sleep(step); waited += step
+            }
+            val results = SearchEngine.search(db, query)
+            runOnUiThread {
+                if (results.isEmpty()) {
+                    showEmpty(getString(R.string.empty_results))
+                } else {
+                    binding.emptyView.visibility = View.GONE
+                    adapter.submitList(results)
+                }
+                hideKeyboard()
+            }
+        }.start()
     }
 
     private fun showEmpty(message: String) {
