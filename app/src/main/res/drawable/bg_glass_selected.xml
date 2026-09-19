@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Blue selection ring for the currently-selected card set / item. Liquid glass
+     accent: translucent blue fill + bright blue stroke, rounded. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/glass_selected_fill" />
+            <corners android:radius="@dimen/glass_radius_sm" />
+            <stroke
+                android:width="@dimen/glass_selected_stroke"
+                android:color="@color/glass_selected_stroke" />
+        </shape>
+    </item>
+    <!-- Inner top highlight for glass feel -->
+    <item android:left="@dimen/glass_selected_stroke" android:right="@dimen/glass_selected_stroke" android:top="@dimen/glass_selected_stroke" android:bottom="0dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="@color/glass_highlight"
+                android:endColor="@android:color/transparent"
+                android:angle="90" />
+            <corners android:radius="@dimen/glass_radius_sm" />
+        </shape>
+    </item>
+</layer-list>

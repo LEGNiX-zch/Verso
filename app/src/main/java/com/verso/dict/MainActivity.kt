@@ -68,6 +68,9 @@ class MainActivity : AppCompatActivity() {
         }
         binding.resultsList.layoutManager = LinearLayoutManager(this)
         binding.resultsList.adapter = adapter
+        // Staggered glass entrance for search results.
+        binding.resultsList.layoutAnimation =
+            android.view.animation.AnimationUtils.loadLayoutAnimation(this, R.anim.glass_layout_anim)
 
         binding.searchButton.setOnClickListener { doSearch() }
 
@@ -111,6 +114,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     binding.emptyView.visibility = View.GONE
                     adapter.submitList(results)
+                    binding.resultsList.scheduleLayoutAnimation()
                 }
                 hideKeyboard()
             }

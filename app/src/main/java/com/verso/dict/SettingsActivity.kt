@@ -74,6 +74,9 @@ class SettingsActivity : AppCompatActivity() {
         binding.rvCardSets.layoutManager = LinearLayoutManager(this)
         binding.rvCardSets.setHasFixedSize(false)
         binding.rvCardSets.adapter = setAdapter
+        // Staggered glass entrance for the card-set list.
+        binding.rvCardSets.layoutAnimation =
+            android.view.animation.AnimationUtils.loadLayoutAnimation(this, R.anim.glass_layout_anim)
 
         binding.btnCreateSet.setOnClickListener {
             val name = binding.etNewSet.text?.toString().orEmpty().trim()
@@ -93,6 +96,7 @@ class SettingsActivity : AppCompatActivity() {
         val sets = userDb.getCardSets()
         setAdapter.submitList(sets)
         binding.tvNoSets.visibility = if (sets.isEmpty()) View.VISIBLE else View.GONE
+        binding.rvCardSets.scheduleLayoutAnimation()
     }
 
     private fun confirmDeleteSet(set: com.verso.dict.data.CardSet) {

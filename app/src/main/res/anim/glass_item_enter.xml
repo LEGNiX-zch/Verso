@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Subtle fade + slide-up for RecyclerView items. Lightweight (no real-time
+     rendering) so it runs smoothly on OPPO Watch hardware. -->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="280"
+    android:interpolator="@android:interpolator/decelerate_quad"
+    android:shareInterpolator="true">
+    <alpha
+        android:fromAlpha="0"
+        android:toAlpha="1" />
+    <translate
+        android:fromYDelta="12%"
+        android:toYDelta="0" />
+</set>

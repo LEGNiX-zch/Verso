@@ -6,12 +6,23 @@
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/accent</item>
         <item name="colorOnSecondary">@color/white</item>
-        <item name="android:colorBackground">@color/background</item>
+        <item name="android:colorBackground">@color/glass_bg_center</item>
         <item name="colorSurface">@color/surface</item>
         <item name="colorOnSurface">@color/text_primary</item>
-        <item name="android:windowBackground">@color/background</item>
+        <!-- Liquid glass gradient background on every activity -->
+        <item name="android:windowBackground">@drawable/bg_app_gradient</item>
         <item name="android:textColorPrimary">@color/text_primary</item>
         <item name="android:textColorSecondary">@color/text_secondary</item>
+        <!-- Smooth glass activity transitions (fade + scale) -->
+        <item name="android:windowAnimationStyle">@style/Animation.Verso</item>
+    </style>
+
+    <!-- Activity enter/exit animations (liquid glass feel, watch-friendly). -->
+    <style name="Animation.Verso" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/glass_activity_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/glass_activity_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/glass_activity_enter</item>
+        <item name="android:activityCloseExitAnimation">@anim/glass_activity_exit</item>
     </style>
 
     <style name="Theme.Verso.Transparent" parent="Theme.Verso">

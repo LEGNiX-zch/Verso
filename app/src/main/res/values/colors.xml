@@ -10,4 +10,32 @@
     <color name="divider">#E1E4E8</color>
     <color name="white">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
+
+    <!-- ===== Liquid Glass palette (iOS 26/27 style) ===== -->
+    <!-- App gradient background: soft blue → lavender -->
+    <color name="glass_bg_start">#E8EDF7</color>
+    <color name="glass_bg_center">#D2DCEE</color>
+    <color name="glass_bg_end">#C3CFE6</color>
+
+    <!-- Glass surface: semi-transparent white with cool tint -->
+    <color name="glass_surface_start">#CCFFFFFF</color>
+    <color name="glass_surface_end">#99FFFFFF</color>
+    <color name="glass_border">#66AABBDD</color>
+    <color name="glass_highlight">#E6FFFFFF</color>
+    <color name="glass_shadow">#22000000</color>
+
+    <!-- Selection ring (liquid glass accent) -->
+    <color name="glass_selected_stroke">#1F6FEB</color>
+    <color name="glass_selected_fill">#221F6FEB</color>
+
+    <!-- Toolbar glass: translucent primary blue -->
+    <color name="glass_toolbar_start">#D9334365</color>
+    <color name="glass_toolbar_end">#CC1F6FEB</color>
+    <color name="glass_toolbar_border">#66FFFFFF</color>
+
+    <!-- Button glass -->
+    <color name="glass_btn_start">#E6FFFFFF</color>
+    <color name="glass_btn_end">#99FFFFFF</color>
+    <color name="glass_btn_border">#5599BBDD</color>
+    <color name="glass_btn_pressed">#441F6FEB</color>
 </resources>

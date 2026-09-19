@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Liquid glass card surface: semi-transparent white, gradient, rounded, bordered.
-     Drop shadow underneath for depth. -->
+<!-- Liquid glass surface: semi-transparent white with vertical light gradient,
+     rounded corners, subtle border + top highlight. Simulates frosted glass depth
+     without expensive real-time blur. -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Drop shadow for depth -->
     <item android:top="1dp" android:left="1dp" android:right="1dp" android:bottom="1dp">
         <shape android:shape="rectangle">
             <solid android:color="@color/glass_shadow" />
             <corners android:radius="@dimen/glass_radius" />
         </shape>
     </item>
+    <!-- Main glass body: gradient top-light → bottom-slightly-darker -->
     <item android:left="0dp" android:right="0dp" android:top="0dp" android:bottom="1dp">
         <shape android:shape="rectangle">
             <gradient
@@ -18,12 +21,14 @@
             <stroke android:width="@dimen/glass_stroke" android:color="@color/glass_border" />
         </shape>
     </item>
+    <!-- Top edge highlight (simulates light hitting the rim) -->
     <item android:left="@dimen/glass_stroke" android:right="@dimen/glass_stroke" android:top="@dimen/glass_stroke" android:bottom="0dp">
         <shape android:shape="rectangle">
             <gradient
                 android:startColor="@color/glass_highlight"
                 android:endColor="@android:color/transparent"
-                android:angle="90" />
+                android:angle="90"
+                android:type="linear" />
             <corners android:radius="@dimen/glass_radius" />
         </shape>
     </item>

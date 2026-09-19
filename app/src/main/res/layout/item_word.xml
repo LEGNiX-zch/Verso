@@ -8,6 +8,7 @@
     android:layout_marginBottom="@dimen/card_margin_v"
     android:background="@drawable/bg_card"
     android:clickable="true"
+    android:elevation="@dimen/glass_elevation"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground"
     android:orientation="vertical"

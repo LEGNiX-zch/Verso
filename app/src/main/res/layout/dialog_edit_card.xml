@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/bg_glass"
     android:orientation="vertical"
     android:padding="@dimen/screen_padding">
 
@@ -15,6 +16,8 @@
         android:maxLines="1"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_secondary"
         android:textSize="@dimen/definition_text" />
 
     <EditText
@@ -28,6 +31,8 @@
         android:inputType="textMultiLine"
         android:minHeight="@dimen/search_height"
         android:padding="10dp"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_secondary"
         android:textSize="@dimen/definition_text" />
 
     <TextView

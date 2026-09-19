@@ -9,7 +9,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
-        android:background="?attr/colorPrimary"
+        android:background="@drawable/bg_glass_toolbar"
+        android:elevation="@dimen/glass_elevation"
         app:navigationIcon="?attr/homeAsUpIndicator"
         app:title="@string/menu_card_manage"
         app:titleTextColor="@color/white" />
@@ -37,7 +38,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/divider" />
+        android:background="@color/glass_border" />
 
     <FrameLayout
         android:layout_width="match_parent"

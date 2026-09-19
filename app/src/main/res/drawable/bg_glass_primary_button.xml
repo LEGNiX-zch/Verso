@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Primary glass button: translucent blue, brighter when pressed. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/primary_dark" />
+            <corners android:radius="@dimen/glass_radius_sm" />
+            <stroke android:width="@dimen/glass_stroke" android:color="@color/glass_highlight" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="@color/glass_toolbar_start"
+                android:endColor="@color/glass_toolbar_end"
+                android:angle="90" />
+            <corners android:radius="@dimen/glass_radius_sm" />
+            <stroke android:width="@dimen/glass_stroke" android:color="@color/glass_toolbar_border" />
+        </shape>
+    </item>
+</selector>

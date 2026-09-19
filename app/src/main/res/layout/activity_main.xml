@@ -16,7 +16,8 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolbar_height"
-            android:background="?attr/colorPrimary"
+            android:background="@drawable/bg_glass_toolbar"
+            android:elevation="@dimen/glass_elevation"
             app:navigationIcon="@drawable/ic_menu"
             app:popupTheme="@style/Theme.Verso"
             app:title="@string/app_name"
@@ -44,25 +45,26 @@
                 android:maxLines="1"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
                 android:textSize="@dimen/definition_text" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/search_button"
-                style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/search_height"
                 android:layout_marginStart="6dp"
+                android:background="@drawable/bg_glass_primary_button"
                 android:text="@string/search_button"
                 android:textColor="@color/white"
                 android:textSize="@dimen/definition_text"
-                app:backgroundTint="@color/primary"
-                app:cornerRadius="@dimen/card_corner" />
+                app:cornerRadius="@dimen/glass_radius_sm" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/divider" />
+            android:background="@color/glass_border" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -96,6 +98,7 @@
         android:layout_width="@dimen/drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@drawable/bg_glass"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/drawer_header"
         app:menu="@menu/drawer_menu" />

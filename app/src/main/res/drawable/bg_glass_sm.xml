@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Liquid glass surface for search bars, edit texts, spinners. -->
+<!-- Smaller liquid glass surface for inputs (search bars, spinners, edit texts). -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:top="1dp" android:left="1dp" android:right="1dp" android:bottom="1dp">
         <shape android:shape="rectangle">

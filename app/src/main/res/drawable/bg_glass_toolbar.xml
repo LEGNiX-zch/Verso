@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Liquid glass toolbar: translucent primary blue gradient with bottom highlight. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="@color/glass_toolbar_start"
+                android:endColor="@color/glass_toolbar_end"
+                android:angle="90" />
+        </shape>
+    </item>
+    <item android:left="0dp" android:right="0dp" android:top="0dp" android:bottom="0dp">
+        <shape android:shape="rectangle">
+            <stroke android:width="@dimen/glass_stroke" android:color="@color/glass_toolbar_border" />
+        </shape>
+    </item>
+</layer-list>
