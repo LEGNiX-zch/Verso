@@ -5,6 +5,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.verso.dict.data.DictionaryDbHelper
@@ -22,6 +23,9 @@ class MainActivity : AppCompatActivity() {
     @Volatile private var dbReady = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Install the launch screen (animated book icon on brand background). Must run before
+        // super.onCreate() so the backport swaps the starting theme for Theme.Verso correctly.
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

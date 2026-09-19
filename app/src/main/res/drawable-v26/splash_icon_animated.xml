@@ -1,0 +1,16 @@
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/splash_icon">
+    <!-- Fade the page in, then reveal the three lines in sequence. -->
+    <target
+        android:name="page"
+        android:animation="@animator/splash_fade_in" />
+    <target
+        android:name="line1"
+        android:animation="@animator/splash_line_in" />
+    <target
+        android:name="line2"
+        android:animation="@animator/splash_line_in_delayed" />
+    <target
+        android:name="line3"
+        android:animation="@animator/splash_line_in_more_delayed" />
+</animated-vector>
