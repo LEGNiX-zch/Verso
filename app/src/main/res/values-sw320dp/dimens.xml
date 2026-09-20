@@ -12,9 +12,4 @@
     <dimen name="toolbar_height">56dp</dimen>
     <dimen name="search_height">48dp</dimen>
     <dimen name="drawer_width">280dp</dimen>
-    <dimen name="glass_radius">20dp</dimen>
-    <dimen name="glass_radius_sm">14dp</dimen>
-    <dimen name="glass_stroke">1dp</dimen>
-    <dimen name="glass_selected_stroke">2dp</dimen>
-    <dimen name="glass_elevation">4dp</dimen>
 </resources>

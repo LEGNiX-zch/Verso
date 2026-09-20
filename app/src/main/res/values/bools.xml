@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Whether to apply the liquid-glass dialog window background.
+         Default (low-perf watch, sw160dp): false -> keep the standard AlertDialog
+         window background for maximum readability and zero blur cost. -->
+    <bool name="use_glass_dialog">false</bool>
+</resources>

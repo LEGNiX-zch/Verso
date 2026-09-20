@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Liquid-glass drawer background (phone only, sw >= 320dp).
+     NO real-time gaussian blur (forbidden on watch, avoided on phone for perf);
+     uses a translucent white fill + subtle top sheen + bright edge rim to evoke
+     iOS26 Liquid-Glass over the page behind the drawer. Text stays readable
+     because the fill alpha is high (90%). -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Translucent glass body -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#E6FFFFFF" />
+        </shape>
+    </item>
+    <!-- Top sheen: brighter white at the top fading to transparent -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#33FFFFFF"
+                android:endColor="#00FFFFFF"
+                android:angle="270" />
+        </shape>
+    </item>
+    <!-- Bright edge highlight (subtle rim) on the trailing edge only -->
+    <item android:left="-1dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <stroke
+                android:width="1dp"
+                android:color="#99FFFFFF" />
+        </shape>
+    </item>
+</layer-list>

@@ -16,8 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolbar_height"
-            android:background="@drawable/bg_glass_toolbar"
-            android:elevation="@dimen/glass_elevation"
+            android:background="?attr/colorPrimary"
             app:navigationIcon="@drawable/ic_menu"
             app:popupTheme="@style/Theme.Verso"
             app:title="@string/app_name"
@@ -54,17 +53,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/search_height"
                 android:layout_marginStart="6dp"
-                android:background="@drawable/bg_glass_primary_button"
                 android:text="@string/search_button"
                 android:textColor="@color/white"
                 android:textSize="@dimen/definition_text"
-                app:cornerRadius="@dimen/glass_radius_sm" />
+                app:backgroundTint="@color/primary"
+                app:cornerRadius="@dimen/card_corner" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/glass_border" />
+            android:background="@color/divider" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -98,7 +97,7 @@
         android:layout_width="@dimen/drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@drawable/bg_glass"
+        android:background="@drawable/bg_drawer"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/drawer_header"
         app:menu="@menu/drawer_menu" />

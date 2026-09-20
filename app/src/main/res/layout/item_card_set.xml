@@ -9,7 +9,6 @@
     android:layout_marginBottom="@dimen/card_margin_v"
     android:background="@drawable/bg_card"
     android:clickable="true"
-    android:elevation="@dimen/glass_elevation"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground"
     android:gravity="center_vertical"
@@ -22,22 +21,19 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textColor="@color/text_primary"
-        android:textStyle="bold"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:text="默认词卡集" />
+        android:textSize="@dimen/word_text"
+        android:textStyle="bold" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_delete_set"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_glass_button"
         android:minWidth="0dp"
         android:minHeight="0dp"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:text="@string/settings_delete_set"
         android:textColor="@color/accent"
-        android:textSize="@dimen/definition_text"
-        app:cornerRadius="@dimen/glass_radius_sm" />
+        android:textSize="@dimen/definition_text" />
 </LinearLayout>

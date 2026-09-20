@@ -2,7 +2,7 @@ package com.verso.dict.ui
 
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +15,6 @@ import com.verso.dict.databinding.ActivityCardManageBinding
 /**
  * View / edit / delete the user's own custom cards. The built-in dictionary is completely
  * invisible here. A spinner at the top filters the list by card set (plus an "all" option).
- * The spinner uses [GlassSpinnerAdapter] so the active filter shows a blue selection ring.
  */
 class CardManageActivity : AppCompatActivity() {
 
@@ -25,7 +24,6 @@ class CardManageActivity : AppCompatActivity() {
 
     private var sets: List<CardSet> = emptyList()
     private var filterId: Long = ALL_SETS
-    private var filterSpinnerAdapter: GlassSpinnerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +38,6 @@ class CardManageActivity : AppCompatActivity() {
         adapter = UserCardAdapter(onEdit = ::showEditDialog, onDelete = ::confirmDelete)
         binding.rvCards.layoutManager = LinearLayoutManager(this)
         binding.rvCards.adapter = adapter
-        // Staggered glass entrance animation for the card list.
-        val anim = android.view.animation.AnimationUtils.loadLayoutAnimation(this, R.anim.glass_layout_anim)
-        binding.rvCards.layoutAnimation = anim
 
         loadFilter()
         refresh()
@@ -60,32 +55,28 @@ class CardManageActivity : AppCompatActivity() {
         val labels = ArrayList<String>()
         labels.add(getString(R.string.card_manage_filter_all))
         labels.addAll(sets.map { it.name })
-        val spinnerAdapter = GlassSpinnerAdapter(this, labels)
+        val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, labels)
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spFilter.adapter = spinnerAdapter
-        filterSpinnerAdapter = spinnerAdapter
         val previousSelection = binding.spFilter.selectedItemPosition
-        binding.spFilter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(p: AdapterView<*>?, v: View?, pos: Int, id: Long) {
+        binding.spFilter.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p: android.widget.AdapterView<*>?, v: View?, pos: Int, id: Long) {
                 filterId = if (pos == 0) ALL_SETS else sets.getOrNull(pos - 1)?.id ?: ALL_SETS
-                filterSpinnerAdapter?.selectedPosition = pos
                 refresh()
             }
-            override fun onNothingSelected(p: AdapterView<*>?) { filterId = ALL_SETS }
+            override fun onNothingSelected(p: android.widget.AdapterView<*>?) { filterId = ALL_SETS }
         }
         if (previousSelection in 0 until labels.size) {
             binding.spFilter.setSelection(previousSelection)
         } else {
             binding.spFilter.setSelection(0)
         }
-        filterSpinnerAdapter?.selectedPosition = binding.spFilter.selectedItemPosition.coerceAtLeast(0)
     }
 
     private fun refresh() {
         val cards = if (filterId == ALL_SETS) userDb.getUserCards() else userDb.getUserCards(filterId)
         adapter.submitList(cards)
         binding.tvEmpty.visibility = if (cards.isEmpty()) View.VISIBLE else View.GONE
-        // Replay the staggered entrance when the list changes.
-        binding.rvCards.scheduleLayoutAnimation()
     }
 
     private fun showEditDialog(card: UserWord) {
@@ -100,20 +91,19 @@ class CardManageActivity : AppCompatActivity() {
         // Populate the set spinner for this edit dialog.
         sets = userDb.getCardSets()
         val names = sets.map { it.name }
-        val setAdapter = GlassSpinnerAdapter(this, names)
+        val setAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, names)
+        setAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spSet.adapter = setAdapter
         val currentSetIndex = sets.indexOfFirst { it.id == card.setId }
         if (currentSetIndex >= 0) {
             spSet.setSelection(currentSetIndex)
-            setAdapter.selectedPosition = currentSetIndex
         }
         var chosenSetId = sets.getOrNull(currentSetIndex)?.id ?: -1L
-        spSet.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(p: AdapterView<*>?, v: View?, pos: Int, id: Long) {
+        spSet.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p: android.widget.AdapterView<*>?, v: View?, pos: Int, id: Long) {
                 chosenSetId = sets.getOrNull(pos)?.id ?: -1L
-                setAdapter.selectedPosition = pos
             }
-            override fun onNothingSelected(p: AdapterView<*>?) { chosenSetId = -1L }
+            override fun onNothingSelected(p: android.widget.AdapterView<*>?) { chosenSetId = -1L }
         }
 
         AlertDialog.Builder(this)

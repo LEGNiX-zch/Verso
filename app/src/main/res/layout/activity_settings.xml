@@ -9,8 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
-        android:background="@drawable/bg_glass_toolbar"
-        android:elevation="@dimen/glass_elevation"
+        android:background="?attr/colorPrimary"
         app:navigationIcon="?attr/homeAsUpIndicator"
         app:title="@string/menu_settings"
         app:titleTextColor="@color/white" />
@@ -88,7 +87,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="4dp"
-                android:background="@color/glass_border" />
+                android:background="@color/divider" />
 
             <!-- ===== Card set management (new section) ===== -->
             <TextView
@@ -128,11 +127,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/search_height"
                     android:layout_marginStart="6dp"
-                    android:background="@drawable/bg_glass_primary_button"
                     android:text="@string/settings_create"
                     android:textColor="@color/white"
                     android:textSize="@dimen/definition_text"
-                    app:cornerRadius="@dimen/glass_radius_sm" />
+                    app:backgroundTint="@color/primary"
+                    app:cornerRadius="@dimen/card_corner" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -157,7 +156,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="4dp"
-                android:background="@color/glass_border" />
+                android:background="@color/divider" />
 
             <!-- ===== Hide built-in dictionary toggle (new section) ===== -->
             <LinearLayout

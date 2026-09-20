@@ -9,7 +9,6 @@
     android:layout_marginBottom="@dimen/card_margin_v"
     android:background="@drawable/bg_card"
     android:clickable="true"
-    android:elevation="@dimen/glass_elevation"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground"
     android:orientation="vertical"
@@ -20,26 +19,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/text_primary"
-        android:textStyle="bold"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:text="apple" />
+        android:textSize="@dimen/word_text"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_definition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:ellipsize="end"
-        android:maxLines="2"
         android:textColor="@color/text_secondary"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:text="苹果；一种水果" />
+        android:textSize="@dimen/definition_text" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="end"
+        android:layout_marginTop="6dp"
         android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
@@ -47,29 +41,25 @@
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_glass_button"
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:text="@string/card_manage_edit"
             android:textColor="@color/primary"
-            android:textSize="@dimen/definition_text"
-            app:cornerRadius="@dimen/glass_radius_sm" />
+            android:textSize="@dimen/definition_text" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_delete"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_glass_button"
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:text="@string/card_manage_delete"
             android:textColor="@color/accent"
-            android:textSize="@dimen/definition_text"
-            app:cornerRadius="@dimen/glass_radius_sm" />
+            android:textSize="@dimen/definition_text" />
     </LinearLayout>
 </LinearLayout>

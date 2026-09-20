@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Drawer background for low-performance devices (OPPO Watch 1st gen, sw160dp).
+     Solid surface color: maximum text readability on a small watch screen, no blur, no glass. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/surface" />
+</shape>

@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Liquid glass surface for search bars, edit texts, spinners. -->
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:top="1dp" android:left="1dp" android:right="1dp" android:bottom="1dp">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/glass_shadow" />
-            <corners android:radius="@dimen/glass_radius_sm" />
-        </shape>
-    </item>
-    <item android:left="0dp" android:right="0dp" android:top="0dp" android:bottom="1dp">
-        <shape android:shape="rectangle">
-            <gradient
-                android:startColor="@color/glass_surface_start"
-                android:endColor="@color/glass_surface_end"
-                android:angle="90" />
-            <corners android:radius="@dimen/glass_radius_sm" />
-            <stroke android:width="@dimen/glass_stroke" android:color="@color/glass_border" />
-        </shape>
-    </item>
-</layer-list>
+<!-- Simple rounded search bar background: light gray fill, slightly darker border. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/surface" />
+    <corners android:radius="@dimen/card_corner" />
+    <stroke android:width="1dp" android:color="@color/divider" />
+</shape>

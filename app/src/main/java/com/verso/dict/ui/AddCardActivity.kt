@@ -1,22 +1,18 @@
 package com.verso.dict.ui
 
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.verso.dict.R
 import com.verso.dict.data.CardSet
 import com.verso.dict.data.UserCardDbHelper
 import com.verso.dict.databinding.ActivityAddCardBinding
-import com.verso.dict.util.FontSizeManager
 
 /**
  * Lets the user manually add a custom word card (English word + Chinese definition) and choose
  * which of their card sets it belongs to. The built-in dictionary is never touched. A default
- * set is guaranteed to exist so the spinner is never empty. The set selector uses
- * [GlassSpinnerAdapter] so the currently-active set shows a blue selection ring.
+ * set is guaranteed to exist so the spinner is never empty.
  */
 class AddCardActivity : AppCompatActivity() {
 
@@ -24,7 +20,6 @@ class AddCardActivity : AppCompatActivity() {
     private lateinit var userDb: UserCardDbHelper
     private var sets: List<CardSet> = emptyList()
     private var selectedSetId: Long = -1L
-    private var spinnerAdapter: GlassSpinnerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,19 +41,17 @@ class AddCardActivity : AppCompatActivity() {
             sets = userDb.getCardSets()
         }
         val names = sets.map { it.name }
-        val adapter = GlassSpinnerAdapter(this, names)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, names)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spSet.adapter = adapter
-        spinnerAdapter = adapter
-        binding.spSet.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(p: AdapterView<*>?, v: View?, pos: Int, id: Long) {
+        binding.spSet.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p: android.widget.AdapterView<*>?, v: android.view.View?, pos: Int, id: Long) {
                 selectedSetId = sets.getOrNull(pos)?.id ?: -1L
-                spinnerAdapter?.selectedPosition = pos
             }
-            override fun onNothingSelected(p: AdapterView<*>?) { selectedSetId = -1L }
+            override fun onNothingSelected(p: android.widget.AdapterView<*>?) { selectedSetId = -1L }
         }
         if (sets.isNotEmpty()) {
             selectedSetId = sets[0].id
-            spinnerAdapter?.selectedPosition = 0
         }
 
         binding.btnSave.setOnClickListener {
@@ -83,10 +76,9 @@ class AddCardActivity : AppCompatActivity() {
         if (refreshed != sets) {
             sets = refreshed
             val names = sets.map { it.name }
-            val adapter = GlassSpinnerAdapter(this, names)
+            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, names)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spSet.adapter = adapter
-            spinnerAdapter = adapter
-            if (sets.isNotEmpty()) spinnerAdapter?.selectedPosition = 0
         }
     }
 }

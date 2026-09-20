@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Phone-sized devices (sw >= 320dp): apply the liquid-glass dialog window
+         background to evoke iOS26 Liquid-Glass. NO real-time blur is used; the
+         effect is purely a translucent drawable. -->
+    <bool name="use_glass_dialog">true</bool>
+</resources>

@@ -40,9 +40,17 @@ class WordDialogFragment : DialogFragment() {
         FontSizeManager.applyScaled(requireContext(), tvWord, R.dimen.word_text)
         FontSizeManager.applyScaled(requireContext(), tvDef, R.dimen.definition_text)
 
-        return AlertDialog.Builder(requireContext())
+        val dialog = AlertDialog.Builder(requireContext())
             .setView(view)
             .setPositiveButton(R.string.appreciate_close, null)
             .create()
+        // On phone-class screens (sw >= 320dp) swap the AlertDialog window background for
+        // the liquid-glass drawable (translucent fill + edge highlight + top sheen, no real-time
+        // blur). On the OPPO Watch (sw160dp) the bool is false, so the standard AlertDialog
+        // window background is kept for maximum readability and zero blur cost.
+        if (requireContext().resources.getBoolean(R.bool.use_glass_dialog)) {
+            dialog.window?.setBackgroundDrawableResource(R.drawable.bg_word_dialog)
+        }
+        return dialog
     }
 }
